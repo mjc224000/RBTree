@@ -161,7 +161,7 @@ public class RBTree<T extends Comparable<T>> {
             /**
              * 4.2 u不存在，或者u为黑，插入节点的父节点是祖父节点的右子节点
              */
-            if ((uncle == null || uncle.color == Color.BLACK )&& !isLeft(p)) {
+            if ((uncle == null || uncle.color == Color.BLACK) && !isLeft(p)) {
                 /**
                  * 4.2.1 插入节点为父亲节点的右子节点
                  */
@@ -176,16 +176,31 @@ public class RBTree<T extends Comparable<T>> {
                      * 4.2.2插入节点是父亲节点的左子节点
                      */
 
+                    rotateRight(p);
+                    cur = p;
+                    continue;
+
+
                 }
             }
             /**
              * 4.3 u 不存在，u为黑，插入节点的父亲节点是祖父节点的左子节点
              */
             if ((uncle == null || uncle.color == Color.BLACK) && isLeft(p)) {
-                cur.father.color = Color.BLACK;
-                cur.father.father.color = Color.RED;
-                cur = rotateRight(cur.father.father);
-                continue;
+                /**
+                 * 4.3.1 当前节点是 父节点的左子节点
+                 */
+                if (isLeft(cur)) {
+                    cur.father.color = Color.BLACK;
+                    cur.father.father.color = Color.RED;
+                    cur = rotateRight(cur.father.father);
+                    continue;
+                } else {
+                    rotateLeft(p);
+                    cur = p;
+                    continue;
+                }
+
             }
 
         }

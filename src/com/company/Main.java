@@ -1,5 +1,7 @@
 package com.company;
+
 import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -7,14 +9,21 @@ public class Main {
         RBTree<Double> rbTree = new RBTree<>();
         long s = System.currentTimeMillis();
         double[] arr = {
-                0.913229867993839,
-                0.5409930258372001,
-                0.869817513603347
+                85,
+                36,
+                10,
+                90,
+                25,
+                50,
+                80,
+                78,
+                22
         };
+        ArrayList al = new ArrayList();
         for (int i = 0; i < 1000; i++) {
-            double var = Math.random();
-
-            rbTree.insert(var);
+            double a = Math.random();
+            System.out.println(a);
+            rbTree.insert(a);
         }
         //
         rbTree.inorder();
